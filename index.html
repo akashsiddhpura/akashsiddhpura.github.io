@@ -1,7 +1,1167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Mihir kacha - Personal Portfolio</title>
+
+     <!--
+    - favicon
+  -->
+     <link rel="shortcut icon" href="./assets/images/my-avatar.png" type="image/x-icon">
+     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+     <!--
+    - custom css link
+  -->
+     <link rel="stylesheet" href="./assets/css/style.css">
+
+     <!--
+    - google font link
+  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+     <!--
+    - #MAIN
+  -->
+
+     <main>
+
+          <!--
+      - #SIDEBAR
+    -->
+
+          <aside class="sidebar" data-sidebar>
+
+               <div class="sidebar-info">
+
+                    <figure>
+                         <img src="./assets/images/my-avatar.png" alt="Mihir Kacha" width="80">
+                    </figure>
+
+                    <div class="info-content">
+                         <h1 class="name" title="Mihir Kacha">Mihir Kacha</h1>
+
+                         <p class="title">Flutter developer</p>
+                    </div>
+
+                    <button class="info_more-btn" data-sidebar-btn>
+                         <span>Show Contacts</span>
+
+                         <ion-icon name="chevron-down"></ion-icon>
+                    </button>
+
+               </div>
+
+               <div class="sidebar-info_more">
+
+                    <div class="separator"></div>
+
+                    <ul class="contacts-list">
+
+                         <li class="contact-item">
+
+                              <div class="icon-box">
+                                   <ion-icon name="mail-outline"></ion-icon>
+                              </div>
+
+                              <div class="contact-info">
+                                   <p class="contact-title">Email</p>
+
+                                   <a href="mailto:mkkacha04@gmail.com" class="contact-link">mkkacha04@gmail.com</a>
+                              </div>
+
+                         </li>
+
+                         <li class="contact-item">
+
+                              <div class="icon-box">
+                                   <ion-icon name="phone-portrait-outline"></ion-icon>
+                              </div>
+
+                              <div class="contact-info">
+                                   <p class="contact-title">Phone</p>
+
+                                   <a href="tel:+12133522795" class="contact-link">+91 96044 95241</a>
+                              </div>
+
+                         </li>
+
+
+                         <!--       
+                              uncomment to show birthdate
+                                <li class="contact-item">
+
+                              <div class="icon-box">
+                                   <ion-icon name="calendar-outline"></ion-icon>
+                              </div>
+
+                              <div class="contact-info">
+                                   <p class="contact-title">Birthday</p>
+
+                                   <time datetime="1982-06-23">June 23, 1982</time>
+                              </div>
+
+                         </li> -->
+
+                         <li class="contact-item">
+
+                              <div class="icon-box">
+                                   <ion-icon name="location-outline"></ion-icon>
+                              </div>
+
+                              <div class="contact-info">
+                                   <p class="contact-title">Location</p>
+
+                                   <address>Gujarat, India</address>
+                              </div>
+
+                         </li>
+
+                    </ul>
+
+                    <div class="separator"></div>
+
+                    <ul class="social-list">
+
+                         <li class="social-item">
+                              <a href="https://www.linkedin.com/in/mihirkacha/" class="social-link">
+                                   <ion-icon name="logo-linkedin"></ion-icon>
+                              </a>
+                         </li>
+
+                         <li class="social-item">
+                              <a href="https://www.upwork.com/freelancers/~019352a5e404aa6250" class="social-link">
+                                   <iconify-icon icon="simple-icons:upwork"></iconify-icon>
+                              </a>
+                         </li>
+
+                         <li class="social-item">
+                              <a href="https://stackoverflow.com/users/22808468/mihir-kacha" class="social-link">
+                                   <ion-icon name="logo-stackoverflow"></ion-icon>
+                              </a>
+                         </li>
+
+                    </ul>
+
+               </div>
+
+          </aside>
+
+
+
+
+
+          <!--
+      - #main-content
+    -->
+
+          <div class="main-content">
+
+               <!--
+        - #NAVBAR
+      -->
+
+               <nav class="navbar">
+
+                    <ul class="navbar-list">
+
+                         <li class="navbar-item">
+                              <button class="navbar-link  active" data-nav-link>About</button>
+                         </li>
+
+                         <li class="navbar-item">
+                              <button class="navbar-link" data-nav-link>Experience</button>
+                         </li>
+
+                         <li class="navbar-item">
+                              <button class="navbar-link" data-nav-link>Portfolio</button>
+                         </li>
+
+                         <li class="navbar-item">
+                              <button class="navbar-link" data-nav-link>Services</button>
+                         </li>
+
+                         <!-- <li class="navbar-item">
+                              <button class="navbar-link" data-nav-link>Contact</button>
+                         </li> -->
+
+                    </ul>
+
+               </nav>
+
+
+
+
+
+               <!--
+        - #ABOUT
+      -->
+
+               <article class="about  active" data-page="about">
+
+                    <header>
+                         <h2 class="h2 article-title">About me</h2>
+                    </header>
+
+                    <section class="about-text">
+                         <p>
+                              Hi there, I'm Mihir Kacha, a driven Flutter developer with more than two years of hands-on
+                              expertise creating mobile applications.
+                         </p>
+
+                         <p>
+                              My experience with Flutter has been formed by my constant commitment to producing
+                              high-caliber, user-friendly applications. My area of expertise consists of combining
+                              cutting-edge technology with a strong design understanding to create visually stunning and
+                              functional applications.With a proven track record of delivering high-quality code and
+                              intuitive user interfaces, I'm adept at integrating complex functionalities while
+                              maintaining code efficiency.
+                         </p>
+                    </section>
+
+
+                    <!--
+          - service
+        -->
+
+                    <section class="service">
+
+                         <h3 class="h3 service-title">What i'm doing</h3>
+
+                         <ul class="service-list">
+
+                              <!--  <li class="service-item">
+
+                                   <div class="service-icon-box">
+                                        <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+                                   </div>
+
+                                   <div class="service-content-box">
+                                        <h4 class="h4 service-item-title">Web design</h4>
+
+                                        <p class="service-item-text">
+                                             The most modern and high-quality design made at a professional level.
+                                        </p>
+                                   </div>
+
+                              </li> -->
+                              <!-- 
+                              <li class="service-item">
+
+                                   <div class="service-icon-box">
+                                        <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                                   </div>
+
+                                   <div class="service-content-box">
+                                        <h4 class="h4 service-item-title">Web development</h4>
+
+                                        <p class="service-item-text">
+                                             High-quality development of sites at the professional level.
+                                        </p>
+                                   </div>
+
+                              </li> -->
+
+                              <li class="service-item">
+
+                                   <div class="service-icon-box">
+                                        <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                                   </div>
+
+                                   <div class="service-content-box">
+                                        <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                                        <p class="service-item-text">
+                                             Professional development of applications for iOS and Android.
+                                        </p>
+                                   </div>
+
+                              </li>
+
+                              <!--  <li class="service-item">
+
+                                   <div class="service-icon-box">
+                                        <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                                   </div>
+
+                                   <div class="service-content-box">
+                                        <h4 class="h4 service-item-title">Photography</h4>
+
+                                        <p class="service-item-text">
+                                             I make high-quality photos of any category at a professional level.
+                                        </p>
+                                   </div>
+
+                              </li> -->
+
+                         </ul>
+
+                    </section>
+
+
+
+
+
+                    <section class="askill">
+
+                         <h3 class="h3 service-title">Skills</h3>
+                         <ol class="askill-list">
+                              <li class="askill-item">Flutter/Dart</li>
+
+                              <li class="askill-item">State Management</li>
+                              <ol class="subpoint-list">
+                                   <li class="subpoint-item">Provider</li>
+                                   <li class="subpoint-item">Bloc</li>
+                                   <li class="subpoint-item">Get X</li>
+                              </ol>
+                              <li class="askill-item">Firebase</li>
+
+
+                              <li class="askill-item">Push Notification</li>
+                              <ol class="subpoint-list">
+
+                                   <li class="subpoint-item">FCM (Direbase Cloud Messaging)</li>
+                                   <li class="subpoint-item">One Signal</li>
+                              </ol>
+                              <li class="askill-item">Third Party Payment Integration</li>
+
+                              <li class="askill-item">In App Purchase</li>
+                              <li class="askill-item">Google Map Integration</li>
+                              <li class="askill-item">Database</li>
+                              <ol class="subpoint-list">
+                                   <li class="subpoint-item">Hive</li>
+                                   <li class="subpoint-item">Sqflite</li>
+                                   <li class="subpoint-item">Firestore</li>
+                              </ol>
+
+                              <li class="askill-item">Rest API Integration</li>
+                         </ol>
+
+
+                    </section>
+
+
+
+
+
+                    <!--
+          - testimonials
+        -->
+
+                    <!-- <section class="testimonials">
+
+                         <h3 class="h3 testimonials-title">Testimonials</h3>
+
+                         <ul class="testimonials-list has-scrollbar">
+
+                              <li class="testimonials-item">
+                                   <div class="content-card" data-testimonials-item>
+
+                                        <figure class="testimonials-avatar-box">
+                                             <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60"
+                                                  data-testimonials-avatar>
+                                        </figure>
+
+                                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+
+                                        <div class="testimonials-text" data-testimonials-text>
+                                             <p>
+                                                  Richard was hired to create a corporate identity. We were very pleased
+                                                  with the work done. She has a
+                                                  lot of experience
+                                                  and is very concerned about the needs of client. Lorem ipsum dolor sit
+                                                  amet, ullamcous cididt
+                                                  consectetur adipiscing
+                                                  elit, seds do et eiusmod tempor incididunt ut laborels dolore
+                                                  magnarels alia.
+                                             </p>
+                                        </div>
+
+                                   </div>
+                              </li>
+
+                              <li class="testimonials-item">
+                                   <div class="content-card" data-testimonials-item>
+
+                                        <figure class="testimonials-avatar-box">
+                                             <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60"
+                                                  data-testimonials-avatar>
+                                        </figure>
+
+                                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller
+                                        </h4>
+
+                                        <div class="testimonials-text" data-testimonials-text>
+                                             <p>
+                                                  Richard was hired to create a corporate identity. We were very pleased
+                                                  with the work done. She has a
+                                                  lot of experience
+                                                  and is very concerned about the needs of client. Lorem ipsum dolor sit
+                                                  amet, ullamcous cididt
+                                                  consectetur adipiscing
+                                                  elit, seds do et eiusmod tempor incididunt ut laborels dolore
+                                                  magnarels alia.
+                                             </p>
+                                        </div>
+
+                                   </div>
+                              </li>
+
+                              <li class="testimonials-item">
+                                   <div class="content-card" data-testimonials-item>
+
+                                        <figure class="testimonials-avatar-box">
+                                             <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60"
+                                                  data-testimonials-avatar>
+                                        </figure>
+
+                                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
+
+                                        <div class="testimonials-text" data-testimonials-text>
+                                             <p>
+                                                  Richard was hired to create a corporate identity. We were very pleased
+                                                  with the work done. She has a
+                                                  lot of experience
+                                                  and is very concerned about the needs of client. Lorem ipsum dolor sit
+                                                  amet, ullamcous cididt
+                                                  consectetur adipiscing
+                                                  elit, seds do et eiusmod tempor incididunt ut laborels dolore
+                                                  magnarels alia.
+                                             </p>
+                                        </div>
+
+                                   </div>
+                              </li>
+
+                              <li class="testimonials-item">
+                                   <div class="content-card" data-testimonials-item>
+
+                                        <figure class="testimonials-avatar-box">
+                                             <img src="./assets/images/avatar-4.png" alt="Henry william" width="60"
+                                                  data-testimonials-avatar>
+                                        </figure>
+
+                                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william
+                                        </h4>
+
+                                        <div class="testimonials-text" data-testimonials-text>
+                                             <p>
+                                                  Richard was hired to create a corporate identity. We were very pleased
+                                                  with the work done. She has a
+                                                  lot of experience
+                                                  and is very concerned about the needs of client. Lorem ipsum dolor sit
+                                                  amet, ullamcous cididt
+                                                  consectetur adipiscing
+                                                  elit, seds do et eiusmod tempor incididunt ut laborels dolore
+                                                  magnarels alia.
+                                             </p>
+                                        </div>
+
+                                   </div>
+                              </li>
+
+                         </ul>
+
+                    </section> -->
+
+
+                    <!--
+          - testimonials modal
+        -->
+
+                    <div class="modal-container" data-modal-container>
+
+                         <div class="overlay" data-overlay></div>
+
+                         <section class="testimonials-modal">
+
+                              <button class="modal-close-btn" data-modal-close-btn>
+                                   <ion-icon name="close-outline"></ion-icon>
+                              </button>
+
+                              <div class="modal-img-wrapper">
+                                   <figure class="modal-avatar-box">
+                                        <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80"
+                                             data-modal-img>
+                                   </figure>
+
+                                   <img src="./assets/images/icon-quote.svg" alt="quote icon">
+                              </div>
+
+                              <div class="modal-content">
+
+                                   <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+                                   <time datetime="2021-06-14">14 June, 2021</time>
+
+                                   <div data-modal-text>
+                                        <p>
+                                             Richard was hired to create a corporate identity. We were very pleased with
+                                             the work done. She has a
+                                             lot of experience
+                                             and is very concerned about the needs of client. Lorem ipsum dolor sit
+                                             amet, ullamcous cididt
+                                             consectetur adipiscing
+                                             elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels
+                                             alia.
+                                        </p>
+                                   </div>
+
+                              </div>
+
+                         </section>
+
+                    </div>
+
+
+                    <!--
+          - clients
+        -->
+
+                    <!-- <section class="clients">
+
+                         <h3 class="h3 clients-title">Clients</h3>
+
+                         <ul class="clients-list has-scrollbar">
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-1-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-2-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-3-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-4-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-5-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                              <li class="clients-item">
+                                   <a href="#">
+                                        <img src="./assets/images/logo-6-color.png" alt="client logo">
+                                   </a>
+                              </li>
+
+                         </ul>
+
+                    </section> -->
+
+               </article>
+
+
+
+
+
+               <!--
+        - #RESUME
+      -->
+
+               <article class="experience" data-page="experience">
+
+                    <header>
+                         <h2 class="h2 article-title">Experience</h2>
+                    </header>
+
+                    <section class="timeline">
+
+                         <div class="title-wrapper">
+                              <div class="icon-box">
+                                   <ion-icon name="book-outline"></ion-icon>
+                              </div>
+
+                              <h3 class="h3"></h3>
+                         </div>
+
+                         <ol class="timeline-list">
+
+                              <li class="timeline-item">
+
+                                   <h3 class="h3 timeline-item-title">Freelance Developer</h3>
+
+                                   <span>Oct 2023 — Present</span>
+
+
+                                   <p class="timeline-text">
+                                        <b style="color: white;">Skills: </b> Version Control · Cross-platform
+                                        Development · State Management
+                                        (BLoC,
+                                        Provider, GetX) · Firebase · REST APIs · Google API · Cloud Firestore · Flutter
+                                        · Application Development · Mobile Application Development · Flutter · Dart
+                                   </p>
+
+                              </li>
+
+                              <li class="timeline-item">
+
+                                   <h3 class="h3 timeline-item-title">Flutter devloper at LogicGo Infotech</h3>
+
+                                   <span>Apr 2022 — Sep 2023</span>
+
+
+                                   <p class="timeline-text">
+                                        <b style="color: white;">Skills: </b> Object-oriented Languages · Application
+                                        Development · State Management · Programming · Problem Solving · Debugging ·
+                                        Application Programming Interfaces (API) · Mobile Application Development ·
+                                        Flutter
+                                   </p>
+
+                              </li>
+
+                              <li class="timeline-item">
+
+                                   <h3 class="h3 timeline-item-title">Flutter devloper at Creative Design & Multimedia
+                                        Institute</h3>
+
+                                   <span>Jul 2021 - Mar 2022</span>
+
+
+                                   <p class="timeline-text">
+                                        <b style="color: white;">Skills: </b> Object-oriented Languages · Application
+                                        Development · State Management
+                                   </p>
+
+                              </li>
+
+                         </ol>
+
+                    </section>
+                    <!-- <section class="timeline">
+
+                         <div class="title-wrapper">
+                              <div class="icon-box">
+                                   <ion-icon name="book-outline"></ion-icon>
+                              </div>
+
+                              <h3 class="h3">Education</h3>
+                         </div>
+
+                         <ol class="timeline-list">
+
+                              <li class="timeline-item">
+
+                                   <h4 class="h4 timeline-item-title">University school of the arts</h4>
+
+                                   <span>2007 — 2008</span>
+
+                                   <p class="timeline-text">
+                                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque
+                                        corrupti, quos dolores et
+                                        quas molestias
+                                        exceptur.
+                                   </p>
+
+                              </li>
+
+                              <li class="timeline-item">
+
+                                   <h4 class="h4 timeline-item-title">New york academy of art</h4>
+
+                                   <span>2006 — 2007</span>
+
+                                   <p class="timeline-text">
+                                        Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis
+                                        voluptas assumenda est
+                                        omnis..
+                                   </p>
+
+                              </li>
+
+                              <li class="timeline-item">
+
+                                   <h4 class="h4 timeline-item-title">High school of art and design</h4>
+
+                                   <span>2002 — 2004</span>
+
+                                   <p class="timeline-text">
+                                        Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut
+                                        fugit, sed consequuntur
+                                        magni dolores
+                                        eos.
+                                   </p>
+
+                              </li>
+
+                         </ol>
+
+                    </section> -->
+
+
+
+               </article>
+
+
+
+
+
+               <!--
+        - #PORTFOLIO
+      -->
+
+               <article class="portfolio" data-page="portfolio">
+
+                    <header>
+                         <h2 class="h2 article-title">Portfolio</h2>
+                    </header>
+
+                    <section class="projects">
+
+                         <div class="filter-select-box">
+
+                              <button class="filter-select" data-select>
+
+                                   <div class="select-value" data-selecct-value>Select category</div>
+
+                                   <div class="select-icon">
+                                        <ion-icon name="chevron-down"></ion-icon>
+                                   </div>
+
+                              </button>
+
+                              <ul class="select-list">
+
+                                   <li class="select-item">
+                                        <button data-select-item>All</button>
+                                   </li>
+
+                                   <li class="select-item">
+                                        <button data-select-item>Web design</button>
+                                   </li>
+
+                                   <li class="select-item">
+                                        <button data-select-item>Applications</button>
+                                   </li>
+
+                                   <li class="select-item">
+                                        <button data-select-item>Web development</button>
+                                   </li>
+
+                              </ul>
+
+                         </div>
+
+                         <ul class="project-list">
+
+                              <li class="project-item  active" data-filter-item data-category="web development">
+                                   <a href="portfolio/workoholik.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/images/project-1.png" alt="finance" loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">Workoholik</h3>
+
+                                        <p class="project-category">On-demand service app.</p>
+
+                                   </a>
+                              </li>
+
+
+                              <li class="project-item  active" data-filter-item data-category="web development">
+                                   <a href="portfolio/sahaj.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="portfolio-links">
+
+
+                                             </div>
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/img/portfolio/sahaj/3.png" alt="orizon" loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">Sahaj</h3>
+
+                                        <p class="project-category">Stock management app</p>
+
+                                   </a>
+                                   <a href="portfolios/2-cars-3d.html" data-gallery="portfolioDetailsGallery"
+                                        data-glightbox="type: external" class="portfolio-details-lightbox"
+                                        title="Portfolio Details"><i class="bx bx-file"></i></a>
+                              </li>
+
+                              <li class="project-item  active" data-filter-item data-category="web design">
+                                   <a href="portfolio/ask-buddy.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/img/portfolio/Ask buddy/1.png" alt="askbuddy"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">Ask Buddy</h3>
+
+                                        <p class="project-category">AI Chatbot</p>
+
+                                   </a>
+                              </li>
+
+                              <li class="project-item  active" data-filter-item data-category="web design">
+                                   <a href="portfolio/invoice-maker.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/img/portfolio/invoicemaker/2.jpeg" alt="invoice-maker"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">Invoice Maker</h3>
+
+                                        <p class="project-category">Estimate Maker</p>
+
+                                   </a>
+                              </li>
+
+                              <li class="project-item  active" data-filter-item data-category="web design">
+                                   <a href="portfolio/nc-pictures.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/img/portfolio/NC Pictures/3.png" alt="nc-pictures"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">NC Pictures</h3>
+
+                                        <p class="project-category">Photoshoot appointment booking app</p>
+
+                                   </a>
+                              </li>
+
+                              <li class="project-item  active" data-filter-item data-category="web design">
+                                   <a href="portfolio/medic-meditation.html" target=”_blank”>
+
+                                        <figure class="project-img">
+                                             <div class="project-item-icon-box">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                             </div>
+
+                                             <img src="./assets/img/portfolio/medic-meditation/1.jpeg"
+                                                  alt="medic-meditation" loading="lazy">
+                                        </figure>
+
+                                        <h3 class="project-title">Medic meditation</h3>
+
+                                        <p class="project-category">Meditation timer</p>
+
+                                   </a>
+                              </li>
+
+                         </ul>
+
+                    </section>
+
+               </article>
+
+
+
+
+
+               <!--
+        - #BLOG
+      -->
+
+               <article class="services" data-page="services">
+
+                    <header>
+                         <h2 class="h2 article-title">Services</h2>
+                    </header>
+
+                    <section class="blog-posts">
+
+                         <ul class="blog-posts-list">
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-1.jpg" alt="Best fonts every designer"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Full App Development</h3>
+
+                                             <p class="blog-text">
+                                                  Full app creation from scratch to the play-store/app-store deployment
+                                                  with IAP & ads integration.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Bug Fixing</h3>
+
+                                             <p class="blog-text">
+                                                  Bug, error and crash fixing in app,app crashing and many more.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-3.jpg" alt="Design digest #80"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Add New Features</h3>
+
+                                             <p class="blog-text">Add or design new features like new module, UI
+                                                  changes, etc.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Reskinning</h3>
+
+                                             <p class="blog-text">
+                                                  Change user interface, logos, designs, particles, sound effects and
+                                                  user experience.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Monetization</h3>
+
+                                             <p class="blog-text">
+                                                  Integrate in-app purchase and any ad network or multiple ad network
+                                                  mediation.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-6.jpg" alt="Design digest #79"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Deployment</h3>
+
+                                             <p class="blog-text">
+                                                  Uploading app to the google play store or apple app store.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                              <li class="blog-post-item">
+                                   <a href="#" onclick="return false;">
+
+                                        <figure class="blog-banner-box">
+                                             <img src="./assets/images/blog-7.jpg" alt="Design digest #79"
+                                                  loading="lazy">
+                                        </figure>
+
+                                        <div class="blog-content">
+
+                                             <div class="blog-meta">
+                                             </div>
+
+                                             <h3 class="h3 blog-item-title">Third Party Plug-in Integration</h3>
+
+                                             <p class="blog-text">
+                                                  Add third party plugins or SDKs like firebase, one signal, google
+                                                  signin, apple signin and many more, or create custom plugins for
+                                                  flutter.
+                                             </p>
+
+                                        </div>
+
+                                   </a>
+                              </li>
+
+                         </ul>
+
+                    </section>
+
+               </article>
+
+
+
+
+
+               <!--
+        - #CONTACT
+      -->
+               <!-- 
+               <article class="contact" data-page="contact">
+
+                    <header>
+                         <h2 class="h2 article-title">Contact</h2>
+                    </header>
+
+                    <section class="mapbox" data-mapbox>
+                         <figure>
+                              <iframe
+                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                                   width="400" height="300" loading="lazy"></iframe>
+                         </figure>
+                    </section>
+
+                    <section class="contact-form">
+
+                         <h3 class="h3 form-title">Contact Form</h3>
+
+                         <form action="#" class="form" data-form>
+
+                              <div class="input-wrapper">
+                                   <input type="text" name="fullname" class="form-input" placeholder="Full name"
+                                        required data-form-input>
+
+                                   <input type="email" name="email" class="form-input" placeholder="Email address"
+                                        required data-form-input>
+                              </div>
+
+                              <textarea name="message" class="form-input" placeholder="Your Message" required
+                                   data-form-input></textarea>
+
+                              <button class="form-btn" type="submit" disabled data-form-btn>
+                                   <ion-icon name="paper-plane"></ion-icon>
+                                   <span>Send Message</span>
+                              </button>
+
+                         </form>
+
+                    </section>
+
+               </article> -->
+
+          </div>
+
+     </main>
+
+
+
+
+
+
+     <!--
+    - custom js link
+  -->
+     <script src="./assets/js/script.js"></script>
+
+     <!--
+    - ionicon link
+  -->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
+
 </html>
