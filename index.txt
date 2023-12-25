@@ -2,20 +2,20 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Mihir Kacha
-Mihir Kacha
+alt = Aakash Siddhpura
+Aakash Siddhpura
 Flutter developer
 
 Show Contacts
 
 Email
-mkkacha04@gmail.com
+aksiddhpura410@gmail.com
 
 Phone
-+91 96044 95241
++91 7573824158
 
 Birthday
-June 23, 1982
+October 4, 2001
 
 Location
 Gujarat, India
