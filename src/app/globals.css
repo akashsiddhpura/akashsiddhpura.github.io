@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-glass: var(--surface-glass);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glass: var(--border-glass);
+
+  /* shadcn UI required variables mapping */
+  --color-border: var(--border-subtle);
+  --color-input: var(--surface-elevated);
+  --color-ring: var(--primary);
+  --color-destructive: var(--error);
+  --color-destructive-foreground: var(--text-primary);
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--text-muted);
+  --color-popover: var(--surface-elevated);
+  --color-popover-foreground: var(--text-primary);
+  --color-card: var(--surface-elevated);
+  --color-card-foreground: var(--text-primary);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--text-primary);
+  --color-primary-foreground: #ffffff;
+
+  --radius-sm: 14px; /* Buttons */
+  --radius-md: 24px; /* Cards, Images */
+  --radius-lg: 28px; /* Glass Panels */
+  --radius-xl: 9999px; /* Pills */
+  --radius: 24px; /* Default */
+}
+
+:root {
+  /* Using hex for standard, we'll assume dark mode default as requested (Primary Background: #050816) */
+  --background: #050816;
+  --foreground: #F8FAFC;
+  
+  --primary: #7C5CFF;
+  --primary-hover: #8D72FF;
+  
+  --accent: #00D9FF;
+  --accent-hover: #33E3FF;
+  
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  --surface: #111827;
+  --surface-elevated: #1A2332;
+  --surface-glass: rgba(255, 255, 255, 0.05);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-disabled: #64748B;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+}
+
+.dark {
+  --background: #050816;
+  --foreground: #F8FAFC;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Custom utilities */
+@utility glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+}
