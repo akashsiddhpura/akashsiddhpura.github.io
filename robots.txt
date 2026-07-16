@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://akashsiddhpura.github.io/sitemap.xml
