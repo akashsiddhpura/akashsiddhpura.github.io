@@ -1,233 +1,312 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Container, Section } from "./ui/container"
-import { ProjectData, projects } from "@/data/projects"
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react"
+import Link from "next/link"
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
+import { ProjectData, projects } from "@/data/projects"
+import { Container } from "./ui/container"
+import { Navbar } from "./navbar"
+import { Footer } from "./footer"
+import { SiteAtmosphere } from "./site-atmosphere"
+import { Reveal, Stagger, StaggerItem } from "./motion/reveal"
 
 interface CaseStudyLayoutProps {
   project: ProjectData
 }
 
-const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+export function CaseStudyLayout({ project }: CaseStudyLayoutProps) {
+  const currentIndex = projects.findIndex((p) => p.slug === project.slug)
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
+
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.6, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <>
+      <SiteAtmosphere />
+      <div className="relative z-10">
+      <Navbar />
+      <main className="min-h-screen pt-28 pb-24">
+        <Container>
+          <div className="mx-auto max-w-[900px]">
+            <Reveal>
+              <Link
+                href="/#projects"
+                className="mb-10 inline-flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-foreground"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to projects
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted">
+                Case Study
+              </p>
+              <h1 className="font-heading text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                {project.name}
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
+                {project.shortDescription}
+              </p>
+            </Reveal>
+
+            <Reveal
+              delay={0.1}
+              className="my-12 grid grid-cols-2 gap-6 border-y border-border-subtle py-8 md:grid-cols-4"
+            >
+              {[
+                { label: "Industry", value: project.industry },
+                { label: "Role", value: project.role },
+                { label: "Platform", value: project.platform },
+                { label: "Status", value: `${project.duration} · ${project.status}` },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-text-muted">
+                    {item.label}
+                  </p>
+                  <p className="text-sm font-medium text-foreground">{item.value}</p>
+                </div>
+              ))}
+            </Reveal>
+
+            <Reveal delay={0.15} className="mb-20 overflow-hidden rounded-[24px] border border-border-subtle">
+              <div className="relative aspect-[16/9] w-full bg-surface">
+                <Image
+                  src={project.heroImage}
+                  alt={`${project.name} hero`}
+                  fill
+                  className="object-cover"
+                  sizes="900px"
+                  priority
+                />
+              </div>
+            </Reveal>
+
+            {project.links?.length ? (
+              <Reveal delay={0.2} className="mb-20 flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-border-subtle px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:border-border-glass hover:text-foreground"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                ))}
+              </Reveal>
+            ) : null}
+
+            <div className="space-y-20">
+              <CaseBlock title="Project Overview">
+                <p className="whitespace-pre-wrap text-lg leading-relaxed text-text-secondary">
+                  {project.overview}
+                </p>
+              </CaseBlock>
+
+              <CaseBlock title="Product Vision">
+                <p className="whitespace-pre-wrap text-lg leading-relaxed text-text-secondary">
+                  {project.vision}
+                </p>
+              </CaseBlock>
+
+              <CaseBlock title="Responsibilities">
+                <ul className="space-y-3">
+                  {project.responsibilities.map((item) => (
+                    <li key={item} className="flex gap-3 text-text-secondary">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseBlock>
+
+              <CaseBlock title="Key Features">
+                <Stagger className="grid gap-4 sm:grid-cols-2">
+                  {project.features.map((feature) => (
+                    <StaggerItem
+                      key={feature.title}
+                      className="rounded-2xl border border-border-subtle bg-surface/40 p-5"
+                    >
+                      <h3 className="font-heading text-lg font-semibold text-foreground">
+                        {feature.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                        {feature.description}
+                      </p>
+                    </StaggerItem>
+                  ))}
+                </Stagger>
+              </CaseBlock>
+
+              <CaseBlock title={project.architecture.title}>
+                <ul className="space-y-3">
+                  {project.architecture.points.map((point) => (
+                    <li key={point} className="flex gap-3 text-text-secondary">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseBlock>
+
+              <CaseBlock title="Engineering Challenges">
+                <div className="space-y-6">
+                  {project.challenges.map((challenge) => (
+                    <div
+                      key={challenge.title}
+                      className="rounded-2xl border border-border-subtle bg-surface/30 p-6"
+                    >
+                      <h3 className="font-heading text-lg font-semibold text-foreground">
+                        {challenge.title}
+                      </h3>
+                      <p className="mt-3 leading-relaxed text-text-secondary">
+                        {challenge.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </CaseBlock>
+
+              <CaseBlock title="Optimizations">
+                <div className="flex flex-wrap gap-2">
+                  {project.optimizations.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-border-subtle px-3 py-1.5 text-sm text-text-secondary"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </CaseBlock>
+
+              <CaseBlock title="UX Focus">
+                <ul className="space-y-3">
+                  {project.ux.map((item) => (
+                    <li key={item} className="flex gap-3 text-text-secondary">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseBlock>
+
+              <CaseBlock title="Tech Stack">
+                <div className="space-y-5">
+                  {Object.entries(project.techStack).map(([category, items]) => (
+                    <div key={category}>
+                      <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-text-muted">
+                        {category}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {items.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded-full border border-border-subtle bg-surface/50 px-3 py-1.5 text-sm text-text-secondary"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CaseBlock>
+
+              <CaseBlock title="Business Impact">
+                <ul className="space-y-3">
+                  {project.businessImpact.map((item) => (
+                    <li key={item} className="flex gap-3 text-text-secondary">
+                      <span className="mt-0.5 text-success">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseBlock>
+
+              <CaseBlock title="Lessons Learned">
+                <ul className="space-y-3">
+                  {project.lessonsLearned.map((item) => (
+                    <li key={item} className="flex gap-3 text-text-secondary">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CaseBlock>
+
+              <CaseBlock title="Key Takeaway">
+                <p className="font-heading text-xl font-medium leading-snug text-foreground md:text-2xl">
+                  {project.keyTakeaways}
+                </p>
+              </CaseBlock>
+            </div>
+
+            <div className="mt-24 grid gap-4 border-t border-border-subtle pt-10 sm:grid-cols-2">
+              {prevProject ? (
+                <Link
+                  href={`/projects/${prevProject.slug}`}
+                  className="group rounded-2xl border border-border-subtle p-5 transition-colors hover:border-border-glass"
+                >
+                  <span className="mb-2 inline-flex items-center gap-2 text-xs text-text-muted">
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                    Previous
+                  </span>
+                  <p className="font-heading text-lg font-semibold text-foreground group-hover:text-primary">
+                    {prevProject.name}
+                  </p>
+                </Link>
+              ) : (
+                <div />
+              )}
+              {nextProject && (
+                <Link
+                  href={`/projects/${nextProject.slug}`}
+                  className="group rounded-2xl border border-border-subtle p-5 text-right transition-colors hover:border-border-glass"
+                >
+                  <span className="mb-2 inline-flex items-center gap-2 text-xs text-text-muted">
+                    Next
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                  <p className="font-heading text-lg font-semibold text-foreground group-hover:text-primary">
+                    {nextProject.name}
+                  </p>
+                </Link>
+              )}
+            </div>
+
+            <Reveal className="mt-10">
+              <Link
+                href="/#contact"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                Interested in working together?
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+        </Container>
+      </main>
+      <Footer />
+      </div>
+    </>
   )
 }
 
-export function CaseStudyLayout({ project }: CaseStudyLayoutProps) {
-  // Find next/prev projects
-  const currentIndex = projects.findIndex(p => p.slug === project.slug)
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
-
+function CaseBlock({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
   return (
-    <div className="bg-background min-h-screen pt-24 pb-32">
-      <Container>
-        <div className="max-w-4xl mx-auto">
-          
-          {/* Back Navigation */}
-          <FadeIn>
-            <Link href="/" className="inline-flex items-center gap-2 text-text-muted hover:text-foreground transition-colors mb-12">
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-medium">Back to Portfolio</span>
-            </Link>
-          </FadeIn>
-
-          {/* Hero Header */}
-          <FadeIn delay={0.1}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-              {project.name}
-            </h1>
-          </FadeIn>
-
-          {/* Meta Grid */}
-          <FadeIn delay={0.2} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 py-8 border-y border-border-subtle">
-            <div>
-              <p className="text-xs font-mono text-text-muted uppercase mb-1">Industry</p>
-              <p className="text-sm font-medium text-text-primary">{project.industry}</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono text-text-muted uppercase mb-1">Role</p>
-              <p className="text-sm font-medium text-text-primary">{project.role}</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono text-text-muted uppercase mb-1">Platform</p>
-              <p className="text-sm font-medium text-text-primary">{project.platform}</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono text-text-muted uppercase mb-1">Duration / Status</p>
-              <p className="text-sm font-medium text-text-primary">{project.duration} • {project.status}</p>
-            </div>
-          </FadeIn>
-
-          {/* Hero Image (Placeholder logic) */}
-          <FadeIn delay={0.3} className="aspect-[16/9] w-full rounded-[24px] bg-surface-elevated border border-border-glass mb-24 overflow-hidden relative group">
-            {/* Using a placeholder gradient since real images might not exist, but adding next/image just in case */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
-            <div className="absolute inset-0 flex items-center justify-center text-text-muted font-heading font-medium text-xl opacity-50 group-hover:opacity-100 transition-opacity">
-              [ {project.name} Hero Mockup ]
-            </div>
-          </FadeIn>
-
-          {/* Content Sections */}
-          <div className="space-y-24">
-            
-            {/* Overview */}
-            <FadeIn>
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-6">Project Overview</h2>
-              <div className="text-lg text-text-secondary leading-relaxed space-y-4 whitespace-pre-wrap">
-                {project.overview}
-              </div>
-            </FadeIn>
-
-            {/* Vision */}
-            <FadeIn>
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-6">Product Vision</h2>
-              <div className="text-lg text-text-secondary leading-relaxed space-y-4 whitespace-pre-wrap">
-                {project.vision}
-              </div>
-            </FadeIn>
-
-            {/* Responsibilities & Impact Grid */}
-            <div className="grid md:grid-cols-2 gap-12">
-              <FadeIn>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-6">My Responsibilities</h3>
-                <ul className="space-y-3">
-                  {project.responsibilities.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-text-secondary">
-                      <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </FadeIn>
-              
-              <FadeIn>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-6">Business Impact</h3>
-                <ul className="space-y-3">
-                  {project.businessImpact.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-text-secondary">
-                      <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </FadeIn>
-            </div>
-
-            {/* Engineering Challenges */}
-            <FadeIn>
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-8">Engineering Challenges</h2>
-              <div className="space-y-8">
-                {project.challenges.map((challenge, i) => (
-                  <div key={i} className="p-8 rounded-[24px] glass border-border-subtle">
-                    <h4 className="text-lg font-bold text-foreground mb-3">{challenge.title}</h4>
-                    <p className="text-text-secondary leading-relaxed">{challenge.description}</p>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-
-            {/* Optimizations & UX Grid */}
-            <div className="grid md:grid-cols-2 gap-12">
-              <FadeIn>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-6">Performance Optimizations</h3>
-                <ul className="space-y-3 list-disc pl-5 text-text-secondary">
-                  {project.optimizations.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </FadeIn>
-              
-              <FadeIn>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-6">UX Improvements</h3>
-                <ul className="space-y-3 list-disc pl-5 text-text-secondary">
-                  {project.ux.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </FadeIn>
-            </div>
-
-            {/* Tech Stack */}
-            <FadeIn>
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-8">Tech Stack</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-                {Object.entries(project.techStack).map(([category, items]) => (
-                  <div key={category}>
-                    <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-4">{category}</h4>
-                    <ul className="space-y-2">
-                      {items.map((item, i) => (
-                        <li key={i} className="text-text-secondary text-sm">{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-
-            {/* Key Takeaways */}
-            <FadeIn>
-              <div className="p-10 rounded-[32px] bg-primary/5 border border-primary/20 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full mix-blend-screen translate-x-1/2 -translate-y-1/2" />
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-6 relative z-10">Key Takeaway</h2>
-                <p className="text-xl text-text-primary leading-relaxed font-medium relative z-10 italic">
-                  "{project.keyTakeaways}"
-                </p>
-              </div>
-            </FadeIn>
-
-          </div>
-
-          {/* Footer Navigation */}
-          <div className="mt-32 pt-12 border-t border-border-glass flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="w-full md:w-auto text-left">
-              {prevProject ? (
-                <Link href={`/projects/${prevProject.slug}`} className="group flex flex-col gap-1">
-                  <span className="text-xs font-mono uppercase text-text-muted">Previous</span>
-                  <span className="text-lg font-bold text-text-primary group-hover:text-primary transition-colors flex items-center gap-2">
-                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> {prevProject.name}
-                  </span>
-                </Link>
-              ) : (
-                <div className="text-text-muted text-sm italic">First Project</div>
-              )}
-            </div>
-            
-            <Link href="/" className="px-6 py-2 rounded-full border border-border-subtle hover:border-foreground text-sm font-medium transition-colors">
-              All Projects
-            </Link>
-
-            <div className="w-full md:w-auto text-right">
-              {nextProject ? (
-                <Link href={`/projects/${nextProject.slug}`} className="group flex flex-col gap-1 items-end">
-                  <span className="text-xs font-mono uppercase text-text-muted">Next</span>
-                  <span className="text-lg font-bold text-text-primary group-hover:text-primary transition-colors flex items-center gap-2">
-                    {nextProject.name} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              ) : (
-                <div className="text-text-muted text-sm italic">Last Project</div>
-              )}
-            </div>
-          </div>
-
-        </div>
-      </Container>
-    </div>
+    <Reveal>
+      <h2 className="mb-6 font-heading text-2xl font-semibold text-foreground">{title}</h2>
+      {children}
+    </Reveal>
   )
 }

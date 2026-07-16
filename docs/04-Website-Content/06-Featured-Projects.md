@@ -393,7 +393,7 @@ Marketplace Platform
 
 ## Overview
 
-A B2B and B2C marketplace connecting suppliers and buyers through a scalable procurement platform.
+A UAE grocery and FMCG marketplace for wholesale (B2B) buyers and retail (B2C) shoppers—covering catalog discovery, bulk ordering, scheduled delivery, and secure checkout.
 
 ---
 

@@ -1,56 +1,61 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { site } from "@/lib/site";
 import "./globals.css";
 
-const fontHeading = Space_Grotesk({
+const fontHeading = Syne({
   variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const fontSans = Inter({
+const fontSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const fontMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Aakash Siddhpura | Software Engineer & Product Builder",
-  description: "Software Engineer specializing in scalable mobile applications, product architecture, high-performance Flutter development, and exceptional user experiences. Explore projects, engineering philosophy, and experience.",
+  metadataBase: new URL("https://akashsiddhpura.github.io"),
+  title: `${site.name} | ${site.title}`,
+  description:
+    "Software Engineer specializing in scalable mobile applications, product architecture, high-performance Flutter development, and exceptional user experiences.",
   keywords: [
     "Software Engineer",
     "Flutter Developer",
     "Product Engineer",
     "Flutter Architecture",
-    "Flutter Performance",
     "Mobile Development",
     "Cross Platform",
     "Startup Engineer",
-    "Freelance Flutter Developer"
   ],
   openGraph: {
-    title: "Aakash Siddhpura | Software Engineer",
-    description: "Building scalable software through thoughtful engineering, clean architecture, and exceptional user experiences.",
+    title: `${site.name} | Software Engineer`,
+    description: site.tagline,
     type: "website",
-    url: "https://your-domain.com",
+    url: "https://akashsiddhpura.github.io",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Aakash Siddhpura | Software Engineer",
-      }
-    ]
+        alt: `${site.name} | Software Engineer`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aakash Siddhpura | Software Engineer",
-    description: "Building products that scale, perform, and create exceptional user experiences.",
+    title: `${site.name} | Software Engineer`,
+    description: site.tagline,
     images: ["/og-image.jpg"],
-  }
+  },
 };
 
 export default function RootLayout({
@@ -61,27 +66,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} h-full antialiased dark`}
+      className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col selection:bg-primary/30 selection:text-primary-foreground">
+      <body className="relative flex min-h-full flex-col overflow-x-hidden">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Aakash Siddhpura",
-              "url": "https://your-domain.com",
-              "jobTitle": "Software Engineer",
-              "sameAs": [
-                "https://linkedin.com",
-                "https://github.com/akashsiddhpura"
-              ]
-            })
+              name: site.name,
+              url: "https://akashsiddhpura.github.io",
+              jobTitle: "Software Engineer",
+              sameAs: [site.linkedin, site.github],
+            }),
           }}
         />
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

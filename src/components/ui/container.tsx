@@ -9,7 +9,7 @@ const Container = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "mx-auto w-full max-w-[1200px] px-4 md:px-8",
+      "mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10",
       className
     )}
     {...props}
@@ -24,7 +24,7 @@ const Section = React.forwardRef<
   <section
     ref={ref}
     className={cn(
-      "py-24 md:py-32",
+      "relative z-10 py-20 md:py-28 lg:py-40",
       className
     )}
     {...props}

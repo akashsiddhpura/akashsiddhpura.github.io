@@ -1,29 +1,32 @@
 # Quoodo
 
-> **Industry:** Business Productivity / CRM / Sales Management
+> **Industry:** E-Commerce / Grocery Marketplace (B2B & B2C)
 > **Role:** Senior Mobile App Developer
 > **Platform:** Android & iOS
 > **Status:** Production
+> **Website:** https://www.quoodo.com/
+> **Play Store:** https://play.google.com/store/apps/details?id=com.quoodob2b.android
+> **App Store:** https://apps.apple.com/ar/app/quoodo-com/id1608142875?l=en-GB
 
 ---
 
 # Overview
 
-Quoodo is a business productivity platform designed to help organizations streamline their sales processes, customer interactions, and internal workflows through a modern mobile application.
+Quoodo is an online grocery and FMCG marketplace serving Dubai and the Northern Emirates. It supports both wholesale (B2B) buyers—retailers, restaurants, and businesses sourcing in bulk—and retail (B2C) customers shopping for home delivery.
 
-The platform enables teams to manage leads, customers, activities, and business operations while providing a centralized experience that improves collaboration and productivity.
+The platform connects buyers with a wide catalog of groceries, beverages, household essentials, and lifestyle products from manufacturers, brands, and merchants. Shoppers can browse by category or brand, place scheduled or express orders, and complete secure digital payments with order tracking and in-app support.
 
-As a Senior Mobile App Developer, I contributed to building scalable Flutter modules, improving application architecture, optimizing performance, and ensuring a smooth user experience across complex business workflows.
+As a Senior Mobile App Developer, I contributed to building commerce-focused Flutter modules, improving application architecture, optimizing catalog and checkout performance, and delivering a reliable buying experience for both home and shop customers.
 
 ---
 
 # Product Vision
 
-The vision behind Quoodo was to simplify business operations by providing teams with a unified platform for managing customers, sales activities, and daily operations.
+The vision behind Quoodo was to make grocery and FMCG procurement as simple for businesses as everyday shopping is for consumers.
 
-Instead of switching between multiple business tools, users can perform their essential tasks within a single mobile application.
+Instead of juggling suppliers, phone orders, and fragmented catalogs, buyers get one mobile experience for product discovery, bulk purchasing, flexible delivery, and reliable order management across the UAE.
 
-The application focuses on productivity, reliability, and ease of use.
+The application focuses on catalog clarity, purchasing confidence, and delivery reliability.
 
 ---
 
@@ -31,53 +34,53 @@ The application focuses on productivity, reliability, and ease of use.
 
 My responsibilities included:
 
-- Developing production-ready Flutter features
-- Improving existing application architecture
-- Building reusable UI components
-- Integrating REST APIs
-- Optimizing application performance
-- Enhancing business workflows
-- Maintaining scalable code structure
-- Collaborating with backend developers and product managers
-- Delivering stable production releases
+- Implementing core buyer flows for home and shop purchasing modes
+- Building product catalog, search, and filter experiences
+- Developing bulk-order and checkout workflows
+- Integrating REST APIs and secure payment gateways
+- Improving application architecture with BLoC and Clean Architecture
+- Optimizing catalog browsing and network performance
+- Building reusable UI components for commerce modules
+- Collaborating with backend and product teams on order and delivery flows
+- Delivering stable production releases for Android and iOS
 
 ---
 
 # Key Features
 
-### Customer Management
+### Dual Buyer Modes
 
-Users can manage customer information, track interactions, and maintain organized customer records.
-
----
-
-### Lead Management
-
-The application allows sales teams to manage potential customers through different stages of the sales pipeline.
+Users choose whether they are shopping for home (B2C) or for a shop (B2B), unlocking the right catalog, pricing, and ordering experience for retail or wholesale needs.
 
 ---
 
-### Activity Tracking
+### Product Catalog & Discovery
 
-Users can monitor daily activities, follow-ups, and business tasks to improve productivity.
-
----
-
-### Notifications
-
-Real-time notifications keep users informed about important updates and assigned activities.
+Browse thousands of grocery and FMCG products across categories such as food staples, beverages, dairy, household, personal care, and more—with search by brand, price, and quantity.
 
 ---
 
-### Dashboard
+### Bulk Ordering & Checkout
 
-A centralized dashboard provides quick access to business information and important metrics.
+Businesses can place wholesale orders with business-friendly purchasing flows, while retail customers enjoy a streamlined cart and secure checkout with card or cash-on-delivery options.
+
+---
+
+### Scheduled & Express Delivery
+
+Customers pick delivery date and time for free on-time delivery across Dubai, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain, with express options via support channels.
+
+---
+
+### Real-time Support & Tracking
+
+In-app chat and WhatsApp support help buyers confirm products and follow order status, payments, and refunds without leaving the shopping flow.
 
 ---
 
 # Technical Architecture
 
-The application follows a modular architecture designed to support long-term product growth.
+The application follows a modular commerce architecture designed to support catalog growth and dual buyer workflows.
 
 ### Architecture
 
@@ -85,8 +88,9 @@ The application follows a modular architecture designed to support long-term pro
 - Repository Pattern
 - BLoC State Management
 - Dependency Injection
-- REST APIs
-- Modular Feature Structure
+- REST APIs & payment gateway integration
+- Local caching for catalogs and browsing resilience
+- Modular feature structure for catalog, cart, orders, and support
 
 This architecture simplified feature development while improving maintainability and scalability.
 
@@ -94,35 +98,35 @@ This architecture simplified feature development while improving maintainability
 
 # Engineering Challenges
 
-## Managing Complex Business Workflows
+## Large Product Catalog Performance
 
-Business applications often involve multiple user flows, permissions, and dependencies between modules.
+Rendering and browsing thousands of SKUs with images, pricing, and filters required careful optimization.
 
-I focused on creating reusable components and well-structured business logic that made these workflows easier to maintain and extend.
-
----
-
-## Large Form Management
-
-Several modules required users to complete detailed forms with validation and conditional fields.
-
-The implementation prioritized responsiveness while keeping the user experience simple and intuitive.
+I focused on efficient pagination, lazy loading, and caching so catalog screens stayed responsive on mid-range devices.
 
 ---
 
-## Data Synchronization
+## B2B and B2C Workflow Separation
 
-Business information changes frequently throughout the day.
+Home and shop buyers share one app but need different purchasing contexts.
 
-The application efficiently synchronized local data with backend updates while minimizing unnecessary API requests and maintaining UI consistency.
+Structured mode-aware flows and reusable commerce modules kept both experiences clear without duplicating the entire codebase.
 
 ---
 
-## Reusable Architecture
+## Search, Filters & Order Reliability
 
-Many business modules shared common functionality.
+Fast product discovery and dependable checkout were essential for wholesale and retail trust.
 
-Instead of duplicating code, I developed reusable widgets, shared business components, and standardized patterns that improved development speed and reduced maintenance effort.
+The implementation prioritized responsive search/filter UX, resilient API handling, and clear order-state feedback throughout the purchase journey.
+
+---
+
+## Reusable Commerce Architecture
+
+Catalog, cart, checkout, and order modules shared common patterns.
+
+Instead of duplicating code, I developed reusable widgets, shared commerce components, and standardized patterns that improved development speed and reduced maintenance effort.
 
 ---
 
@@ -130,35 +134,35 @@ Instead of duplicating code, I developed reusable widgets, shared business compo
 
 Key optimizations included:
 
-- API response caching
-- Optimized widget rebuilding
-- Lazy loading
-- Efficient state management
-- Faster screen navigation
-- Reduced rendering overhead
-- Reusable UI components
-- Improved loading states
-- Better memory management
+- Catalog pagination and lazy loading
+- API response and image caching
+- Optimized widget rebuilding on listing screens
+- Efficient state management for cart and orders
+- Faster category and search navigation
+- Reduced rendering overhead on large product lists
+- Reusable commerce UI components
+- Improved loading and empty states
+- Better memory management during browsing
 
-These improvements helped provide a responsive and reliable experience even during complex business operations.
+These improvements helped provide a responsive shopping experience even with large product catalogs.
 
 ---
 
 # User Experience
 
-Business applications are used for long periods throughout the workday, making usability and efficiency essential.
+Grocery and wholesale buyers need speed, clarity, and confidence while ordering.
 
 The interface was designed with a focus on:
 
-- Simple navigation
-- Fast task completion
-- Consistent UI patterns
-- Clear information hierarchy
-- Responsive interactions
-- Smooth transitions
-- Reduced user effort
+- Clear home vs shop shopping modes
+- Fast catalog browsing and product discovery
+- Simple cart and checkout flows
+- Visible delivery scheduling choices
+- Accessible in-app support during ordering
+- Consistent commerce UI patterns
+- Responsive feedback for payments and order status
 
-Every design decision aimed to help users complete their work with minimal friction.
+Every design decision aimed to reduce friction between finding a product and completing a delivery-ready order.
 
 ---
 
@@ -181,6 +185,7 @@ Every design decision aimed to help users complete their work with minimal frict
 ### Networking
 
 - REST APIs
+- Payment Gateways
 
 ### Dependency Injection
 
@@ -191,38 +196,39 @@ Every design decision aimed to help users complete their work with minimal frict
 
 - Shared Preferences
 - Secure Storage
+- Catalog Caching
 
 ---
 
 # Business Impact
 
-Quoodo helped organizations digitize and simplify their daily business operations through a mobile-first experience.
+Quoodo helped businesses and households across the UAE source groceries and FMCG products through a single mobile marketplace.
 
 My contributions improved:
 
-- Application performance
-- Code maintainability
-- UI consistency
-- Development scalability
-- Overall product stability
-- User experience
+- Smoother wholesale and retail purchasing flows
+- Faster product discovery across large catalogs
+- More reliable checkout and order tracking
+- Better scalability for marketplace features
+- Improved mobile performance under catalog load
+- Stronger maintainability for commerce modules
 
-The modular architecture also enabled faster development of future business features.
+The modular architecture also enabled faster development of future marketplace features.
 
 ---
 
 # Lessons Learned
 
-Working on Quoodo expanded my understanding of business-oriented applications where reliability, maintainability, and scalability are critical.
+Working on Quoodo expanded my understanding of commerce applications where catalog scale, buyer type, and delivery reliability are critical.
 
 Key learnings included:
 
-- Designing scalable business workflows
-- Building reusable application modules
-- Managing complex forms and validation
-- Improving application maintainability
-- Delivering reliable production software
-- Collaborating closely with product and backend teams
+- Marketplace apps need architecture that scales with catalog size and buyer type
+- B2B and B2C can share one product when mode-aware UX is designed carefully
+- Search and listing performance directly affect conversion in commerce apps
+- Caching and pagination are foundational for grocery-scale catalogs
+- Clear order and delivery feedback builds trust in delivery-led products
+- Collaborating closely with product and backend teams leads to more reliable purchase flows
 
 ---
 
@@ -230,21 +236,21 @@ Key learnings included:
 
 The project page includes:
 
-- Dashboard
-- Customer Management
-- Lead Pipeline
-- Activity Screens
-- Business Reports
-- Notification Flow
-- Workflow Screens
-- Performance Highlights
+- Home / shop mode selection
+- Product catalog browsing
+- Search and category filters
+- Cart and checkout
+- Delivery scheduling
+- Order tracking
+- In-app support flows
+- Performance highlights
 
 ---
 
 # Key Takeaways
 
-Quoodo strengthened my experience in building enterprise-focused mobile applications where performance, maintainability, and user productivity are equally important.
+Quoodo strengthened my experience shipping a production grocery marketplace where catalog performance, dual buyer workflows, and reliable checkout matter as much as clean architecture.
 
-The project reinforced the importance of writing scalable code, designing reusable architectures, and creating user experiences that help businesses operate more efficiently.
+The project reinforced the importance of writing scalable commerce code, designing reusable modules, and creating user experiences that help buyers discover products and complete orders with confidence.
 
-Building Quoodo further developed my ability to transform complex business requirements into clean, intuitive, and production-ready mobile solutions.
+Building Quoodo further developed my ability to transform complex marketplace requirements into clean, intuitive, and production-ready mobile solutions.

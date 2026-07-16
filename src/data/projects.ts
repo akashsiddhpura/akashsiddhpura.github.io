@@ -7,6 +7,9 @@ export type ProjectData = {
   platform: string
   status: string
   heroImage: string
+  shortDescription: string
+  highlights: string[]
+  tech: string[]
   overview: string
   vision: string
   responsibilities: string[]
@@ -19,6 +22,7 @@ export type ProjectData = {
   businessImpact: string[]
   lessonsLearned: string[]
   keyTakeaways: string
+  links?: { label: string; href: string }[]
 }
 
 export const projects: ProjectData[] = [
@@ -31,6 +35,15 @@ export const projects: ProjectData[] = [
     platform: "Android, iOS (Flutter), Web (Next.js - In Progress)",
     status: "Production",
     heroImage: "/images/blog-2.jpg",
+    shortDescription:
+      "A community platform combining social feeds, memberships, events, and payments into one production-ready mobile product.",
+    highlights: [
+      "Feed Architecture",
+      "Performance Optimization",
+      "Membership & Payments",
+      "Media Caching",
+    ],
+    tech: ["Flutter", "BLoC", "REST API", "AWS S3", "WebSocket", "Drift"],
     overview: "Sulok is a community-driven social platform designed to help individuals, organizations, and communities build meaningful digital spaces. The platform enables communities (Lok) to share updates, manage memberships, organize events, communicate with members, and receive financial contributions—all within a single application.\n\nUnlike traditional social platforms that primarily focus on content sharing, Sulok combines social networking with community management, making it easier for organizations to engage and grow their audience.",
     vision: "The goal of Sulok is to provide communities with a single platform where they can:\n\n- Publish updates through rich social posts\n- Build exclusive communities using memberships\n- Organize and manage events\n- Accept contributions and payments\n- Connect members through community circles\n- Deliver a modern and engaging social experience",
     responsibilities: [
@@ -142,6 +155,15 @@ export const projects: ProjectData[] = [
     platform: "Android & iOS",
     status: "Production",
     heroImage: "/img/portfolio/alpha-tribe/1.png",
+    shortDescription:
+      "A FinTech intelligence app delivering real-time corporate announcements, watchlists, and AI-assisted market insights.",
+    highlights: [
+      "Real-time Data Sync",
+      "WebSocket Integration",
+      "Optimized State Management",
+      "Low-Latency UI",
+    ],
+    tech: ["Flutter", "WebSocket", "BLoC", "REST API", "Firebase"],
     overview: "Alpha Tribe is a stock market intelligence platform designed to help investors stay informed through real-time corporate announcements, market updates, and AI-powered insights.\n\nThe application aggregates information from multiple sources and presents it in a structured and easy-to-consume format, allowing users to follow companies, monitor announcements, and receive timely updates without switching between different platforms.",
     vision: "The vision behind Alpha Tribe was to simplify how investors consume financial information. Instead of manually browsing multiple exchanges, company filings, and financial websites, users receive everything in a single application.",
     responsibilities: [
@@ -243,6 +265,15 @@ export const projects: ProjectData[] = [
     platform: "Android & iOS",
     status: "Production",
     heroImage: "/img/portfolio/vignanam/1.jpg",
+    shortDescription:
+      "A multilingual spiritual and educational platform built for large content libraries, offline access, and smooth media experiences.",
+    highlights: [
+      "Offline Architecture",
+      "Large Datasets",
+      "Multilingual Support",
+      "Storage Optimization",
+    ],
+    tech: ["Flutter", "SQLite", "Firebase", "REST API", "Caching"],
     overview: "Vignanam is a digital platform designed to make spiritual knowledge, scriptures, devotional content, and educational resources easily accessible to users through a modern mobile experience.\n\nThe application serves as a centralized platform where users can explore religious content, read articles, watch videos, listen to audio, and stay connected with daily spiritual updates.",
     vision: "The goal of Vignanam was to bridge traditional spiritual knowledge with modern technology. Instead of relying on multiple websites, books, and media platforms, users can access a complete collection of devotional and educational content from a single application.",
     responsibilities: [
@@ -339,103 +370,134 @@ export const projects: ProjectData[] = [
   {
     slug: "quoodo",
     name: "Quoodo",
-    industry: "Business Productivity / CRM",
+    industry: "E-Commerce / Grocery Marketplace (B2B & B2C)",
     role: "Senior Mobile App Developer",
     duration: "Production",
     platform: "Android & iOS",
     status: "Production",
     heroImage: "/img/portfolio/quoodo/1.png",
-    overview: "Quoodo is a business productivity platform designed to help organizations streamline their sales processes, customer interactions, and internal workflows through a modern mobile application.\n\nThe platform enables teams to manage leads, customers, activities, and business operations while providing a centralized experience that improves collaboration and productivity.",
-    vision: "The vision behind Quoodo was to simplify business operations by providing teams with a unified platform for managing customers, sales activities, and daily operations. Instead of switching between multiple business tools, users can perform their essential tasks within a single mobile application.",
+    shortDescription:
+      "A UAE grocery and FMCG marketplace for wholesale buyers and retail shoppers—covering catalog discovery, bulk ordering, scheduled delivery, and secure checkout.",
+    highlights: [
+      "B2B & B2C Commerce",
+      "Product Catalog",
+      "Bulk Ordering",
+      "Search & Filters",
+    ],
+    tech: ["Flutter", "REST API", "BLoC", "Payment Gateway", "Caching"],
+    overview: "Quoodo is an online grocery and FMCG marketplace serving Dubai and the Northern Emirates. It supports both wholesale (B2B) buyers—retailers, restaurants, and businesses sourcing in bulk—and retail (B2C) customers shopping for home delivery.\n\nThe platform connects buyers with a wide catalog of groceries, beverages, household essentials, and lifestyle products from manufacturers, brands, and merchants. Shoppers can browse by category or brand, place scheduled or express orders, and complete secure digital payments with order tracking and in-app support.",
+    vision: "The vision behind Quoodo was to make grocery and FMCG procurement as simple for businesses as everyday shopping is for consumers. Instead of juggling suppliers, phone orders, and fragmented catalogs, buyers get one mobile experience for product discovery, bulk purchasing, flexible delivery, and reliable order management across the UAE.",
     responsibilities: [
-      "Developing production-ready Flutter features",
-      "Improving existing application architecture",
-      "Building reusable UI components",
-      "Integrating REST APIs",
-      "Optimizing application performance",
-      "Enhancing business workflows",
-      "Maintaining scalable code structure",
-      "Delivering stable production releases"
+      "Implementing core buyer flows for home and shop purchasing modes",
+      "Building product catalog, search, and filter experiences",
+      "Developing bulk-order and checkout workflows",
+      "Integrating REST APIs and secure payment gateways",
+      "Improving application architecture with BLoC and Clean Architecture",
+      "Optimizing catalog browsing and network performance",
+      "Building reusable UI components for commerce modules",
+      "Collaborating with backend and product teams on order and delivery flows",
+      "Delivering stable production releases for Android and iOS"
     ],
     features: [
       {
-        title: "Customer Management",
-        description: "Users can manage customer information, track interactions, and maintain organized customer records."
+        title: "Dual Buyer Modes",
+        description: "Users choose whether they are shopping for home (B2C) or for a shop (B2B), unlocking the right catalog, pricing, and ordering experience for retail or wholesale needs."
       },
       {
-        title: "Lead Management",
-        description: "The application allows sales teams to manage potential customers through different stages of the sales pipeline."
+        title: "Product Catalog & Discovery",
+        description: "Browse thousands of grocery and FMCG products across categories such as food staples, beverages, dairy, household, personal care, and more—with search by brand, price, and quantity."
       },
       {
-        title: "Activity Tracking",
-        description: "Users can monitor daily activities, follow-ups, and business tasks to improve productivity."
+        title: "Bulk Ordering & Checkout",
+        description: "Businesses can place wholesale orders with business-friendly purchasing flows, while retail customers enjoy a streamlined cart and secure checkout with card or cash-on-delivery options."
+      },
+      {
+        title: "Scheduled & Express Delivery",
+        description: "Customers pick delivery date and time for free on-time delivery across Dubai, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain, with express options via support channels."
+      },
+      {
+        title: "Real-time Support & Tracking",
+        description: "In-app chat and WhatsApp support help buyers confirm products and follow order status, payments, and refunds without leaving the shopping flow."
       }
     ],
     architecture: {
-      title: "Modular Architecture",
+      title: "Commerce-Ready Modular Architecture",
       points: [
-        "Clean Architecture",
-        "Repository Pattern",
+        "Clean Architecture & Repository Pattern",
         "BLoC State Management",
         "Dependency Injection",
-        "Modular Feature Structure"
+        "REST APIs & payment gateway integration",
+        "Local caching for catalogs and browsing resilience",
+        "Modular feature structure for catalog, cart, orders, and support"
       ]
     },
     challenges: [
       {
-        title: "Managing Complex Business Workflows",
-        description: "Business applications often involve multiple user flows, permissions, and dependencies between modules. Focused on creating reusable components and well-structured business logic."
+        title: "Large Product Catalog Performance",
+        description: "Rendering and browsing thousands of SKUs with images, pricing, and filters required efficient pagination, lazy loading, and caching so catalog screens stayed responsive on mid-range devices."
       },
       {
-        title: "Large Form Management",
-        description: "Several modules required users to complete detailed forms with validation and conditional fields. The implementation prioritized responsiveness while keeping the UX simple."
+        title: "B2B and B2C Workflow Separation",
+        description: "Home and shop buyers share one app but need different purchasing contexts. Structured mode-aware flows and reusable commerce modules kept both experiences clear without duplicating the entire codebase."
       },
       {
-        title: "Data Synchronization",
-        description: "The application efficiently synchronized local data with backend updates while minimizing unnecessary API requests and maintaining UI consistency."
+        title: "Search, Filters & Order Reliability",
+        description: "Fast product discovery and dependable checkout were essential for wholesale and retail trust. Focused on responsive search/filter UX, resilient API handling, and clear order-state feedback throughout the purchase journey."
       }
     ],
     optimizations: [
-      "API response caching",
-      "Optimized widget rebuilding",
-      "Lazy loading",
-      "Efficient state management",
-      "Faster screen navigation",
-      "Reduced rendering overhead",
-      "Reusable UI components",
-      "Improved loading states"
+      "Catalog pagination and lazy loading",
+      "API response and image caching",
+      "Optimized widget rebuilding on listing screens",
+      "Efficient state management for cart and orders",
+      "Faster category and search navigation",
+      "Reduced rendering overhead on large product lists",
+      "Reusable commerce UI components",
+      "Improved loading and empty states"
     ],
     ux: [
-      "Simple navigation",
-      "Fast task completion",
-      "Consistent UI patterns",
-      "Clear information hierarchy",
-      "Responsive interactions",
-      "Smooth transitions",
-      "Reduced user effort"
+      "Clear home vs shop shopping modes",
+      "Fast catalog browsing and product discovery",
+      "Simple cart and checkout flows",
+      "Visible delivery scheduling choices",
+      "Accessible in-app support during ordering",
+      "Consistent commerce UI patterns",
+      "Responsive feedback for payments and order status"
     ],
     techStack: {
       "Mobile": ["Flutter", "Dart"],
       "State Management": ["BLoC"],
       "Architecture": ["Clean Architecture", "Repository Pattern"],
-      "Networking": ["REST APIs"],
-      "Local Storage": ["Shared Preferences", "Secure Storage"]
+      "Networking": ["REST APIs", "Payment Gateways"],
+      "Local Storage": ["Shared Preferences", "Secure Storage", "Catalog Caching"],
+      "Dependency Injection": ["GetIt", "Injectable"]
     },
     businessImpact: [
-      "Application performance",
-      "Code maintainability",
-      "UI consistency",
-      "Development scalability",
-      "Overall product stability",
-      "User experience"
+      "Smoother wholesale and retail purchasing flows",
+      "Faster product discovery across large catalogs",
+      "More reliable checkout and order tracking",
+      "Better scalability for marketplace features",
+      "Improved mobile performance under catalog load",
+      "Stronger maintainability for commerce modules"
     ],
     lessonsLearned: [
-      "Designing scalable business workflows",
-      "Building reusable application modules",
-      "Managing complex forms and validation",
-      "Improving application maintainability",
-      "Delivering reliable production software"
+      "Marketplace apps need architecture that scales with catalog size and buyer type.",
+      "B2B and B2C can share one product when mode-aware UX is designed carefully.",
+      "Search and listing performance directly affect conversion in commerce apps.",
+      "Caching and pagination are foundational for grocery-scale catalogs.",
+      "Clear order and delivery feedback builds trust in delivery-led products."
     ],
-    keyTakeaways: "Building Quoodo further developed my ability to transform complex business requirements into clean, intuitive, and production-ready mobile solutions where performance, maintainability, and user productivity are equally important."
+    keyTakeaways: "Building Quoodo strengthened my experience shipping a production grocery marketplace where catalog performance, dual buyer workflows, and reliable checkout matter as much as clean architecture. The project reinforced how commerce products succeed when technical decisions directly support discovery, purchasing confidence, and delivery clarity.",
+    links: [
+      { label: "Website", href: "https://www.quoodo.com/" },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.quoodob2b.android&hl=en_IN",
+      },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/ar/app/quoodo-com/id1608142875?l=en-GB",
+      },
+    ]
   }
 ]

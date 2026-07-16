@@ -115,7 +115,7 @@ Suggested direction:
 
 Every project has taught me something different.
 
-From community platforms and financial products to content-driven applications and business tools, each one challenged me to think beyond implementation and focus on architecture, performance, and user experience.
+From community platforms and financial products to content-driven apps and commerce marketplaces, each one challenged me to think beyond implementation and focus on architecture, performance, and user experience.
 
 Below are some of the products I'm most proud to have contributed to.
 
@@ -353,7 +353,7 @@ Content Platform
 
 Quoodo
 
-Business Productivity
+Grocery Marketplace (B2B & B2C)
 
 ★★★★☆
 

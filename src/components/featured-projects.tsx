@@ -1,202 +1,110 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Container, Section } from "./ui/container"
-import { Button } from "./ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { projects, type ProjectData } from "@/data/projects"
+import { Container, Section } from "./ui/container"
+import { SectionHeader } from "./section-header"
+import { Reveal } from "./motion/reveal"
 import { cn } from "@/lib/utils"
 
-const projects = [
-  {
-    name: "Sulok",
-    slug: "sulok",
-    industry: "Community Platform",
-    role: "Senior Mobile Developer",
-    duration: "2 Years",
-    status: "Production",
-    description: "SULOK is a modern social community platform designed to connect users through discussions, communities, events, messaging, and rich media sharing.",
-    highlights: [
-      "Feed Architecture",
-      "Performance Optimization",
-      "Membership & Payments",
-      "Media Caching"
-    ],
-    tech: ["Flutter", "BLoC", "REST API", "AWS S3", "WebSocket", "Caching", "Firebase"],
-    image: "/images/blog-2.jpg" // Using placeholder since sulok directory doesn't exist
-  },
-  {
-    name: "Alpha Tribe",
-    slug: "alpha-tribe",
-    industry: "FinTech / Stock Market Platform",
-    role: "Flutter Developer",
-    duration: "1 Year",
-    status: "Production",
-    description: "Alpha Tribe is a real-time stock market platform providing live market updates, company insights, and financial data.",
-    highlights: [
-      "Real-time Data Sync",
-      "WebSocket Integration",
-      "Optimized State Management",
-      "Low-Latency UI"
-    ],
-    tech: ["Flutter", "WebSocket", "BLoC", "REST API", "Firebase"],
-    image: "/img/portfolio/alpha-tribe/1.png"
-  },
-  {
-    name: "Vignanam",
-    slug: "vignanam",
-    industry: "Digital Spiritual Platform",
-    role: "Mobile Engineer",
-    duration: "Production",
-    status: "Live",
-    description: "A multilingual digital platform delivering scriptures, devotional content, and spiritual resources to users across India. Supporting millions of content interactions.",
-    highlights: [
-      "Offline Architecture",
-      "Large Datasets",
-      "Multilingual Support",
-      "Storage Optimization"
-    ],
-    tech: ["Flutter", "SQLite", "Firebase", "REST API", "Caching"],
-    image: "/img/portfolio/vignanam/1.jpg"
-  },
-  {
-    name: "Quoodo",
-    slug: "quoodo",
-    industry: "Marketplace Platform",
-    role: "Mobile Architect",
-    duration: "Production",
-    status: "Live",
-    description: "A B2B and B2C marketplace connecting suppliers and buyers through a scalable procurement platform with complex product catalogues.",
-    highlights: [
-      "Complex Catalogues",
-      "Search Performance",
-      "Payment Flow",
-      "Supplier Management"
-    ],
-    tech: ["Flutter", "REST API", "State Management", "Firebase"],
-    image: "/img/portfolio/quoodo/1.png"
-  }
-]
-
 export function FeaturedProjects() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
-    <Section ref={ref} id="projects" className="relative z-10 py-24 bg-background">
+    <Section id="projects">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.6 }}
-          className="mb-24"
-        >
-          <span className="text-xs font-mono font-bold tracking-widest text-text-muted uppercase mb-4 block">
-            Featured Projects
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6 max-w-2xl">
-            Products I&apos;ve Helped Bring to Life.
-          </h2>
-          <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-            From community platforms and financial products to content-driven applications and business tools, each one challenged me to think beyond implementation and focus on architecture, performance, and user experience.
-          </p>
-        </motion.div>
+        <Reveal>
+          <SectionHeader
+            label="Featured Projects"
+            title="Products I've helped bring to life."
+            description="From community platforms and financial products to content-driven apps and commerce marketplaces—each one challenged me to think beyond implementation and focus on architecture, performance, and user experience."
+          />
+        </Reveal>
 
-        <div className="flex flex-col gap-32">
-          {projects.map((project, idx) => {
-            const isEven = idx % 2 === 0
-
-            return (
-              <ProjectCard key={idx} project={project} isEven={isEven} index={idx} />
-            )
-          })}
+        <div className="flex flex-col gap-20 md:gap-28">
+          {projects.map((project, index) => (
+            <ProjectRow key={project.slug} project={project} index={index} />
+          ))}
         </div>
       </Container>
     </Section>
   )
 }
 
-function ProjectCard({ project, isEven, index }: { project: any, isEven: boolean, index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const isCardInView = useInView(cardRef, { once: true, margin: "-20%" })
-
-  const contentOrder = isEven ? "lg:order-1" : "lg:order-2"
-  const visualOrder = isEven ? "lg:order-2" : "lg:order-1"
+function ProjectRow({ project, index }: { project: ProjectData; index: number }) {
+  const reverse = index % 2 === 1
 
   return (
-    <div ref={cardRef} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[70vh]">
-      
-      {/* Content Section */}
-      <motion.div 
-        initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-        animate={isCardInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isEven ? -40 : 40 }}
-        transition={{ duration: 0.8 }}
-        className={cn("flex flex-col", contentOrder)}
+    <Reveal>
+      <article
+        className={cn(
+          "grid items-center gap-8 lg:grid-cols-2 lg:gap-14",
+          reverse && "lg:[&>*:first-child]:order-2"
+        )}
       >
-        <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-text-muted uppercase tracking-wider mb-6">
-          <span className="text-primary font-bold">{project.industry}</span>
-          <span>•</span>
-          <span>{project.role}</span>
-        </div>
+        <Link
+          href={`/projects/${project.slug}`}
+          className="group relative block overflow-hidden rounded-[24px] border border-border-subtle bg-surface"
+        >
+          <div className="relative aspect-[16/11] w-full overflow-hidden">
+            <Image
+              src={project.heroImage}
+              alt={`${project.name} preview`}
+              fill
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#10151c]/25 via-transparent to-transparent" />
+          </div>
+        </Link>
 
-        <h3 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-          {project.name}
-        </h3>
+        <div>
+          <div className="mb-4 flex flex-wrap items-center gap-3 text-xs font-mono uppercase tracking-[0.14em] text-text-muted">
+            <span>{project.industry}</span>
+            <span className="text-border-glass">·</span>
+            <span>{project.status}</span>
+            <span className="text-border-glass">·</span>
+            <span>{project.duration}</span>
+          </div>
 
-        <p className="text-lg text-text-secondary leading-relaxed mb-8">
-          {project.description}
-        </p>
+          <h3 className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            {project.name}
+          </h3>
+          <p className="mt-2 text-sm text-text-secondary">{project.role}</p>
 
-        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-          {project.highlights.map((highlight: string, i: number) => (
-            <div key={i} className="flex items-start gap-3">
-              <span className="text-success mt-1">✓</span>
-              <span className="text-text-primary font-medium">{highlight}</span>
-            </div>
-          ))}
-        </div>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
+            {project.shortDescription}
+          </p>
 
-        <div className="flex flex-wrap gap-2 mb-10">
-          {project.tech.map((t: string, i: number) => (
-            <span key={i} className="px-3 py-1 rounded-full text-xs font-medium bg-surface-elevated text-text-secondary border border-border-glass">
-              {t}
-            </span>
-          ))}
-        </div>
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            {project.highlights.map((highlight) => (
+              <li key={highlight} className="flex items-center gap-2 text-sm text-text-secondary">
+                <span className="h-1 w-1 rounded-full bg-primary" />
+                {highlight}
+              </li>
+            ))}
+          </ul>
 
-        <div className="flex items-center gap-4 mt-auto">
-          <Link href={`/projects/${project.slug}`} className="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-all font-medium">
-            View Case Study
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.tech.slice(0, 5).map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-border-subtle px-3 py-1 text-xs text-text-muted"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <Link
+            href={`/projects/${project.slug}`}
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+          >
+            View case study
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
-      </motion.div>
-
-      {/* Visual Section */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-        animate={isCardInView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className={cn("relative w-full aspect-[4/3] lg:aspect-square rounded-[32px] overflow-hidden glass group", visualOrder)}
-      >
-        {/* Very subtle glow effect that appears on hover */}
-        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 z-10 mix-blend-overlay pointer-events-none" />
-        
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.4 }}
-          className="w-full h-full relative"
-        >
-          <Image
-            src={project.image}
-            alt={`${project.name} preview`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </motion.div>
-      </motion.div>
-
-    </div>
+      </article>
+    </Reveal>
   )
 }

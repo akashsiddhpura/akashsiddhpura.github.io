@@ -1,76 +1,112 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import Image from "next/image"
+import { projects } from "@/data/projects"
 import { cn } from "@/lib/utils"
 
-const projects = [
-  { name: "Alpha Tribe", image: "/images/blog-1.jpg" }, // using placeholder since actual app screens may vary in aspect ratio, but we have alpha-tribe/1.png
-  { name: "Vignanam", image: "/img/portfolio/vignanam/1.jpg" },
-  { name: "Quoodo", image: "/img/portfolio/quoodo/1.png" },
-]
+const showcase = projects.map((project) => ({
+  name: project.name,
+  image: project.heroImage,
+  industry: project.industry.split("/")[0].trim(),
+}))
 
 export function DeviceShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
+  const current = showcase[currentIndex]
 
   useEffect(() => {
+    if (prefersReducedMotion || paused) return
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % projects.length)
-    }, 6000)
+      setCurrentIndex((prev) => (prev + 1) % showcase.length)
+    }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [prefersReducedMotion, paused])
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.94, y: 20, rotate: 2 }}
-      animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
-      transition={{ duration: 0.9, delay: 1.2 }}
-      className="relative w-full max-w-[300px] mx-auto perspective-1000"
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.75, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto w-full max-w-[280px] sm:max-w-[300px]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* Floating animation wrapper */}
-      <motion.div
-        animate={{
-          y: [-8, 8, -8],
-          rotate: [-1, 1, -1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="relative z-10"
-      >
-        {/* Device frame (minimal glass look) */}
-        <div className="relative rounded-[40px] border-[8px] border-surface-elevated bg-background shadow-2xl overflow-hidden aspect-[1/2.16]">
-          {/* Top notch placeholder */}
-          <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20">
-            <div className="w-1/3 h-full bg-surface-elevated rounded-b-xl" />
-          </div>
+      <div className="absolute left-1/2 top-[45%] -z-10 h-[85%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_68%)] blur-2xl" />
 
+      <div className="mb-5 flex items-end justify-between gap-3">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-muted">
+            Featured work
+          </p>
           <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="absolute inset-0"
+            <motion.p
+              key={current.name}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.25 }}
+              className="mt-1 font-heading text-lg font-semibold text-foreground"
             >
-              <Image
-                src={projects[currentIndex].image}
-                alt={projects[currentIndex].name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 300px"
-              />
-            </motion.div>
+              {current.name}
+            </motion.p>
           </AnimatePresence>
+          <p className="text-xs text-text-muted">{current.industry}</p>
         </div>
+        <span className="font-mono text-[10px] text-text-muted">
+          {String(currentIndex + 1).padStart(2, "0")} / {String(showcase.length).padStart(2, "0")}
+        </span>
+      </div>
 
-        {/* Device Reflection / Glow */}
-        <div className="absolute -inset-4 -z-10 bg-primary/20 blur-3xl rounded-full opacity-50" />
-      </motion.div>
+      <div className="relative">
+        <div className="relative aspect-[9/19] overflow-hidden rounded-[2.35rem] border border-border-glass bg-background shadow-[0_24px_60px_rgba(16,21,28,0.14)]">
+          <div className="absolute inset-[5px] overflow-hidden rounded-[2rem] bg-surface">
+            <div className="absolute inset-x-0 top-0 z-20 flex h-7 justify-center">
+              <div className="mt-2 h-[18px] w-[30%] rounded-full bg-foreground/80" />
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={current.image}
+                  alt={current.name}
+                  fill
+                  className="object-cover"
+                  sizes="300px"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {showcase.map((item, index) => (
+          <button
+            key={item.name}
+            type="button"
+            aria-label={`Show ${item.name}`}
+            onClick={() => setCurrentIndex(index)}
+            className={cn(
+              "h-1.5 rounded-full transition-all duration-200",
+              index === currentIndex
+                ? "w-6 bg-primary"
+                : "w-1.5 bg-foreground/20 hover:bg-foreground/35"
+            )}
+          />
+        ))}
+      </div>
     </motion.div>
   )
 }

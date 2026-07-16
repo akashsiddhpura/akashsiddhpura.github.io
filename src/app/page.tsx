@@ -1,3 +1,4 @@
+import { SiteAtmosphere } from "@/components/site-atmosphere"
 import { LoadingExperience } from "@/components/loading-experience"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
@@ -15,21 +16,24 @@ import { Footer } from "@/components/footer"
 export default function Home() {
   return (
     <>
+      <SiteAtmosphere />
       <LoadingExperience />
-      <Navbar />
-      <main className="relative min-h-screen bg-background">
-        <Hero />
-        <TrustIndicators />
-        <About />
-        <EngineeringPhilosophy />
-        <Experience />
-        <FeaturedProjects />
-        <TechnicalExpertise />
-        <Achievements />
-        <CurrentlyBuilding />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navbar />
+        <main className="relative min-h-screen">
+          <Hero />
+          <TrustIndicators />
+          <About />
+          <EngineeringPhilosophy />
+          <Experience />
+          <FeaturedProjects />
+          <TechnicalExpertise />
+          <Achievements />
+          <CurrentlyBuilding />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

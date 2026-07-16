@@ -1,13 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
@@ -16,7 +17,7 @@
   --color-primary-hover: var(--primary-hover);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
-  
+
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
@@ -33,7 +34,6 @@
   --color-border-subtle: var(--border-subtle);
   --color-border-glass: var(--border-glass);
 
-  /* shadcn UI required variables mapping */
   --color-border: var(--border-subtle);
   --color-input: var(--surface-elevated);
   --color-ring: var(--primary);
@@ -47,71 +47,234 @@
   --color-card-foreground: var(--text-primary);
   --color-secondary: var(--surface);
   --color-secondary-foreground: var(--text-primary);
-  --color-primary-foreground: #ffffff;
+  --color-primary-foreground: var(--primary-foreground);
 
-  --radius-sm: 14px; /* Buttons */
-  --radius-md: 24px; /* Cards, Images */
-  --radius-lg: 28px; /* Glass Panels */
-  --radius-xl: 9999px; /* Pills */
-  --radius: 24px; /* Default */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 9999px;
+  --radius: 20px;
 }
 
 :root {
-  /* Using hex for standard, we'll assume dark mode default as requested (Primary Background: #050816) */
-  --background: #050816;
-  --foreground: #F8FAFC;
-  
-  --primary: #7C5CFF;
-  --primary-hover: #8D72FF;
-  
-  --accent: #00D9FF;
-  --accent-hover: #33E3FF;
-  
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  color-scheme: light;
 
-  --surface: #111827;
-  --surface-elevated: #1A2332;
-  --surface-glass: rgba(255, 255, 255, 0.05);
+  /* Cool studio light + viridian signal */
+  --background: #eef1f4;
+  --foreground: #10151c;
 
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
-  --text-disabled: #64748B;
+  --primary: #0c7c74;
+  --primary-hover: #0a6b64;
+  --primary-foreground: #ffffff;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.12);
-}
+  --accent: #2a3f55;
+  --accent-hover: #1e2f40;
 
-.dark {
-  --background: #050816;
-  --foreground: #F8FAFC;
+  --success: #059669;
+  --warning: #c2410c;
+  --error: #dc2626;
+
+  --surface: #f7f9fb;
+  --surface-elevated: #ffffff;
+  --surface-glass: rgba(247, 249, 251, 0.86);
+
+  --text-primary: #10151c;
+  --text-secondary: #3d4754;
+  --text-muted: #6b7585;
+  --text-disabled: #9aa3b0;
+
+  --border-subtle: rgba(16, 21, 28, 0.08);
+  --border-glass: rgba(16, 21, 28, 0.14);
+
+  --glow-primary: rgba(12, 124, 116, 0.14);
+  --glow-secondary: rgba(42, 63, 85, 0.1);
+  --glow-tertiary: rgba(12, 124, 116, 0.07);
+  --atmosphere-mid: #e4e9ef;
+  --vignette: rgba(238, 241, 244, 0.72);
+  --grain-opacity: 0.14;
+  --grain-blend: multiply;
+  --beam-highlight: rgba(255, 255, 255, 0.45);
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
+
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 40%, transparent);
+    color: var(--foreground);
   }
 }
 
-/* Custom utilities */
 @utility glass {
   background: var(--surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border-glass);
+}
+
+@utility surface-panel {
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  border: 1px solid var(--border-subtle);
+}
+
+.site-atmosphere {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.site-atmosphere__base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 10%, var(--glow-primary), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 90% 25%, var(--glow-secondary), transparent 50%),
+    radial-gradient(ellipse 45% 35% at 50% 100%, var(--glow-tertiary), transparent 55%),
+    linear-gradient(180deg, var(--background) 0%, var(--atmosphere-mid) 50%, var(--background) 100%);
+}
+
+.site-atmosphere__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.site-atmosphere__orb--a {
+  width: min(55vw, 520px);
+  height: min(55vw, 520px);
+  top: -8%;
+  left: 12%;
+  background: var(--glow-primary);
+  animation: drift-a 18s ease-in-out infinite;
+}
+
+.site-atmosphere__orb--b {
+  width: min(45vw, 420px);
+  height: min(45vw, 420px);
+  top: 20%;
+  right: -5%;
+  background: var(--glow-secondary);
+  animation: drift-b 22s ease-in-out infinite;
+}
+
+.site-atmosphere__orb--c {
+  width: min(40vw, 360px);
+  height: min(40vw, 360px);
+  bottom: 5%;
+  left: 35%;
+  background: var(--glow-tertiary);
+  animation: drift-c 26s ease-in-out infinite;
+}
+
+.site-atmosphere__beam {
+  position: absolute;
+  inset: -20% -10%;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    var(--beam-highlight) 48%,
+    transparent 62%
+  );
+  transform: rotate(-8deg);
+  animation: beam-shift 14s ease-in-out infinite;
+}
+
+.site-atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.site-atmosphere__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, var(--vignette) 100%);
+}
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 6%) scale(1.08);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-6%, 4%) scale(1.1);
+  }
+}
+
+@keyframes drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5%, -5%);
+  }
+}
+
+@keyframes beam-shift {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: rotate(-8deg) translateX(-2%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: rotate(-8deg) translateX(3%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-atmosphere__orb,
+  .site-atmosphere__beam {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
