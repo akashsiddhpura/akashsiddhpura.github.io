@@ -46,7 +46,7 @@ export function About() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#10151c]/80 via-[#10151c]/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#15171b]/90 via-[#15171b]/25 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <p className="font-heading text-xl font-semibold text-white">
                     Aakash Siddhpura

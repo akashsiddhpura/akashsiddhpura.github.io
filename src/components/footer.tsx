@@ -67,12 +67,14 @@ export function Footer() {
                 Email
               </a>
             </nav>
-            <Link
+            <a
               href={site.resume}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex rounded-xl border border-border-subtle px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-border-glass"
             >
-              Download Resume
-            </Link>
+              View Resume
+            </a>
           </div>
         </div>
 

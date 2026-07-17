@@ -50,50 +50,50 @@
   --color-primary-foreground: var(--primary-foreground);
 
   --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-xl: 9999px;
-  --radius: 20px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius: 16px;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  /* Cool studio light + viridian signal */
-  --background: #eef1f4;
-  --foreground: #10151c;
+  /* Graphite canvas + royal blue */
+  --background: #15171b;
+  --foreground: #eceff3;
 
-  --primary: #0c7c74;
-  --primary-hover: #0a6b64;
+  --primary: #4169e1;
+  --primary-hover: #5a7fe8;
   --primary-foreground: #ffffff;
 
-  --accent: #2a3f55;
-  --accent-hover: #1e2f40;
+  --accent: #8fa4e8;
+  --accent-hover: #a8b8f0;
 
-  --success: #059669;
-  --warning: #c2410c;
-  --error: #dc2626;
+  --success: #3ecf8e;
+  --warning: #e6b84d;
+  --error: #ef6b6b;
 
-  --surface: #f7f9fb;
-  --surface-elevated: #ffffff;
-  --surface-glass: rgba(247, 249, 251, 0.86);
+  --surface: #1e2228;
+  --surface-elevated: #262b33;
+  --surface-glass: rgba(30, 34, 40, 0.82);
 
-  --text-primary: #10151c;
-  --text-secondary: #3d4754;
-  --text-muted: #6b7585;
-  --text-disabled: #9aa3b0;
+  --text-primary: #eceff3;
+  --text-secondary: #b4bac4;
+  --text-muted: #8b929e;
+  --text-disabled: #5c636e;
 
-  --border-subtle: rgba(16, 21, 28, 0.08);
-  --border-glass: rgba(16, 21, 28, 0.14);
+  --border-subtle: rgba(236, 239, 243, 0.08);
+  --border-glass: rgba(236, 239, 243, 0.14);
 
-  --glow-primary: rgba(12, 124, 116, 0.14);
-  --glow-secondary: rgba(42, 63, 85, 0.1);
-  --glow-tertiary: rgba(12, 124, 116, 0.07);
-  --atmosphere-mid: #e4e9ef;
-  --vignette: rgba(238, 241, 244, 0.72);
-  --grain-opacity: 0.14;
-  --grain-blend: multiply;
-  --beam-highlight: rgba(255, 255, 255, 0.45);
+  --glow-primary: rgba(65, 105, 225, 0.22);
+  --glow-secondary: rgba(143, 164, 232, 0.1);
+  --glow-tertiary: rgba(65, 105, 225, 0.08);
+  --atmosphere-mid: #1a1d22;
+  --vignette: rgba(21, 23, 27, 0.9);
+  --grain-opacity: 0.2;
+  --grain-blend: overlay;
+  --beam-highlight: rgba(236, 239, 243, 0.035);
 }
 
 @layer base {
@@ -162,7 +162,7 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.7;
+  opacity: 0.5;
   will-change: transform;
 }
 

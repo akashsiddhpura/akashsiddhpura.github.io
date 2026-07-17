@@ -53,7 +53,7 @@ export function Navbar() {
           className={cn(
             "relative z-50 flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 md:px-6",
             isScrolled || mobileMenuOpen
-              ? "glass shadow-[0_8px_28px_rgba(16,21,28,0.08)]"
+              ? "glass shadow-[0_8px_28px_rgba(0,0,0,0.4)]"
               : "border border-transparent bg-transparent"
           )}
         >
@@ -98,12 +98,14 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            <Link
+            <a
               href={site.resume}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-xl border border-border-subtle px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:border-border-glass hover:text-foreground"
             >
               Resume
-            </Link>
+            </a>
             <Link
               href="/#contact"
               className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
@@ -140,13 +142,15 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
+              <a
                 href={site.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="rounded-xl px-4 py-3 text-base font-medium text-text-secondary transition-colors hover:bg-surface-elevated hover:text-foreground"
               >
                 Resume
-              </Link>
+              </a>
               <Link
                 href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}

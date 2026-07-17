@@ -42,8 +42,8 @@ export function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 md:pb-20 md:pt-32">
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute left-[12%] top-[18%] h-[42%] w-[42%] rounded-full bg-primary/[0.1] blur-[110px]" />
-        <div className="absolute right-[8%] top-[28%] h-[36%] w-[36%] rounded-full bg-accent/[0.07] blur-[100px]" />
+        <div className="absolute left-[12%] top-[18%] h-[42%] w-[42%] rounded-full bg-primary/[0.14] blur-[110px]" />
+        <div className="absolute right-[8%] top-[28%] h-[36%] w-[36%] rounded-full bg-primary/[0.08] blur-[100px]" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </div>
 
@@ -104,12 +104,14 @@ export function Hero() {
               View Projects
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link
+            <a
               href={site.resume}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full border border-border-subtle bg-transparent px-6 text-sm font-semibold text-foreground transition-colors duration-200 hover:border-border-glass hover:bg-surface/40"
             >
               Resume
-            </Link>
+            </a>
             <Link
               href="#contact"
               className="inline-flex h-12 items-center px-2 text-sm font-medium text-text-muted transition-colors duration-200 hover:text-foreground"

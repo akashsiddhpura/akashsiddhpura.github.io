@@ -12,6 +12,8 @@ const showcase = projects.map((project) => ({
   industry: project.industry.split("/")[0].trim(),
 }))
 
+const ease = [0.22, 1, 0.36, 1] as const
+
 export function DeviceShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -30,34 +32,32 @@ export function DeviceShowcase() {
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.75, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.75, delay: 0.35, ease }}
       className="relative mx-auto w-full max-w-[280px] sm:max-w-[300px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <div className="absolute left-1/2 top-[45%] -z-10 h-[85%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_68%)] blur-2xl" />
 
-      <div className="mb-5 flex items-end justify-between gap-3">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-muted">
-            Featured work
-          </p>
+      <div className="mb-6 flex items-baseline justify-between gap-4">
+        <div className="min-w-0 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.p
               key={current.name}
-              initial={{ opacity: 0, y: 6 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25 }}
-              className="mt-1 font-heading text-lg font-semibold text-foreground"
+              exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6 }}
+              transition={{ duration: 0.35, ease }}
+              className="truncate font-heading text-xl font-semibold tracking-tight text-foreground"
             >
               {current.name}
             </motion.p>
           </AnimatePresence>
-          <p className="text-xs text-text-muted">{current.industry}</p>
         </div>
-        <span className="font-mono text-[10px] text-text-muted">
-          {String(currentIndex + 1).padStart(2, "0")} / {String(showcase.length).padStart(2, "0")}
+        <span className="shrink-0 font-mono text-[10px] tabular-nums tracking-wide text-text-muted">
+          {String(currentIndex + 1).padStart(2, "0")}
+          <span className="text-foreground/25"> / </span>
+          {String(showcase.length).padStart(2, "0")}
         </span>
       </div>
 
@@ -65,7 +65,7 @@ export function DeviceShowcase() {
         <div className="relative aspect-[9/19] overflow-hidden rounded-[2.35rem] border border-border-glass bg-background shadow-[0_24px_60px_rgba(16,21,28,0.14)]">
           <div className="absolute inset-[5px] overflow-hidden rounded-[2rem] bg-surface">
             <div className="absolute inset-x-0 top-0 z-20 flex h-7 justify-center">
-              <div className="mt-2 h-[18px] w-[30%] rounded-full bg-foreground/80" />
+              <div className="mt-2 h-[18px] w-[30%] rounded-full bg-black/90 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
             </div>
 
             <AnimatePresence mode="wait">
